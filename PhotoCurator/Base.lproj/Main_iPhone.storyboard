@@ -30,7 +30,19 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7GA-qx-Lxe">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="7GA-qx-Lxe" secondAttribute="trailing" id="TOz-6v-26w"/>
+                            <constraint firstItem="7GA-qx-Lxe" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="gun-HG-AMn"/>
+                            <constraint firstItem="7GA-qx-Lxe" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="irf-3c-cgZ"/>
+                            <constraint firstAttribute="bottom" secondItem="7GA-qx-Lxe" secondAttribute="bottom" id="r0F-9o-qMS"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="uMb-BA-Tdu"/>
                 </viewController>
