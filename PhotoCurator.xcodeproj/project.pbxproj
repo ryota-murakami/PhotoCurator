@@ -482,6 +482,7 @@
 				AA4CC9CC18AB79C100C0FB84 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AA4CC9CD18AB79C100C0FB84 /* Build configuration list for PBXNativeTarget "PhotoCuratorTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +491,7 @@
 				AA4CC9CF18AB79C100C0FB84 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
