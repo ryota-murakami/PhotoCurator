@@ -21,6 +21,12 @@
 
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
+    NSUserDefaults *database = [NSUserDefaults standardUserDefaults];
+    BOOL agree = [database boolForKey:@"agree"];
+
+    if(!agree){
+        [self performSegueWithIdentifier:@"Auth" sender:self];
+    }
 }
 
 - (void)didReceiveMemoryWarning
