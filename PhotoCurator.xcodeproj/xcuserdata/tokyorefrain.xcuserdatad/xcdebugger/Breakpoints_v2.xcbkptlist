@@ -40,11 +40,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PhotoCurator/Auth ViewController.m"
-            timestampString = "414141881.381925"
+            timestampString = "414143175.041703"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "@implementation Auth_ViewController"
             landmarkType = "3">
          </BreakpointContent>

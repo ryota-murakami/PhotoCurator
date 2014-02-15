@@ -14,7 +14,7 @@
 
 @end
 
-@interface Auth_ViewController : UIViewController<NSURLConnectionDataDelegate>
+@interface Auth_ViewController : UIViewController
 
 @property(weak, nonatomic) id <Auth_ViewControllerDelegate> delegate;
 

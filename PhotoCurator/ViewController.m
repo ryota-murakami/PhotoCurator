@@ -9,6 +9,7 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+-(void)photoButtonTaped:(UIBarButtonItem*)sender;
 
 @end
 
@@ -24,12 +25,20 @@
         [self performSegueWithIdentifier:@"Auth" sender:self];
     }
     
-    
-    
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    //左上のボタン
+    UIBarButtonItem *photoButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(photoButtonTaped:)];
+    self.navigationItem.leftBarButtonItem = photoButton;
+    
+    //検索バー
+    
+    UISearchBar *searchBar = [[UISearchBar alloc]init];
+    searchBar.placeholder = @"場所/住所を検索";
+    searchBar.delegate = self;
+    self.navigationItem.titleView = searchBar;
+    
 
     
     
@@ -41,16 +50,33 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark Auth_ViewController
 
 -(void)authEnd:(Auth_ViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+#pragma mark -
+
+#pragma mark segue
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     [[segue destinationViewController]setDelegate:self];
 }
+#pragma mark -
+
+#pragma mark photoViewController
+
+-(void)photoButtonTaped:(UIBarButtonItem*)sender
+{
+    NSLog(@"photoボタン");
+}
+#pragma mark -
+
+
+
+
 
 
 @end

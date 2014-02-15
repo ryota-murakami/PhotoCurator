@@ -77,8 +77,7 @@
     
     //認証処理
     if([recivestr isEqualToString:@"OK"]){
-        NSLog(@"true");
-        
+       
         NSUserDefaults *database;
         database = [NSUserDefaults standardUserDefaults];
         [database setBool:YES forKey:@"agree"];

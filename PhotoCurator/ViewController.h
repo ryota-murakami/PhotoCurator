@@ -9,6 +9,7 @@
 
 //#import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController<Auth_ViewControllerDelegate>
+@interface ViewController : UIViewController<Auth_ViewControllerDelegate,UISearchBarDelegate>
+
 
 @end
