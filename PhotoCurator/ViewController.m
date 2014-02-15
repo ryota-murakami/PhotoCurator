@@ -16,17 +16,23 @@
 
 - (void)viewDidLoad
 {
+    //初回起動時に利用規約を表示する
+    NSUserDefaults *database = [NSUserDefaults standardUserDefaults];
+    BOOL agree = [database boolForKey:@"agree"];
+    
+    if(!agree){
+        [self performSegueWithIdentifier:@"Auth" sender:self];
+    }
+    
+    
+    
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
-    NSUserDefaults *database = [NSUserDefaults standardUserDefaults];
-    BOOL agree = [database boolForKey:@"agree"];
-
-    if(!agree){
-        [self performSegueWithIdentifier:@"Auth" sender:self];
-    }
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -34,5 +40,17 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+-(void)authEnd:(Auth_ViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    [[segue destinationViewController]setDelegate:self];
+}
+
 
 @end

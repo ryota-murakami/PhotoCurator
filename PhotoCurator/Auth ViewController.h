@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface Auth_ViewController : UIViewController
+@class Auth_ViewController;
+@protocol Auth_ViewControllerDelegate
+-(void)authEnd:(Auth_ViewController *)controller;
+
+@end
+
+@interface Auth_ViewController : UIViewController<NSURLConnectionDataDelegate>
+
+@property(weak, nonatomic) id <Auth_ViewControllerDelegate> delegate;
 
 @end
