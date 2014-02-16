@@ -37,6 +37,7 @@
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="7GA-qx-Lxe" secondAttribute="trailing" id="TOz-6v-26w"/>
                             <constraint firstItem="7GA-qx-Lxe" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="gun-HG-AMn"/>

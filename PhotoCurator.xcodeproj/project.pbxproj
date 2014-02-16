@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA1D3B6C18B08D7B0057737C /* Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1D3B6B18B08D7B0057737C /* Annotation.m */; };
 		AA4CC99918AB79C100C0FB84 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4CC99818AB79C100C0FB84 /* Foundation.framework */; };
 		AA4CC99B18AB79C100C0FB84 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4CC99A18AB79C100C0FB84 /* CoreGraphics.framework */; };
 		AA4CC99D18AB79C100C0FB84 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4CC99C18AB79C100C0FB84 /* UIKit.framework */; };
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA1D3B6A18B08D7B0057737C /* Annotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Annotation.h; sourceTree = "<group>"; };
+		AA1D3B6B18B08D7B0057737C /* Annotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Annotation.m; sourceTree = "<group>"; };
 		AA4CC99518AB79C100C0FB84 /* PhotoCurator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoCurator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA4CC99818AB79C100C0FB84 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AA4CC99A18AB79C100C0FB84 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -131,6 +134,8 @@
 				AA4CC9AD18AB79C100C0FB84 /* Main_iPad.storyboard */,
 				AA4CC9B018AB79C100C0FB84 /* ViewController.h */,
 				AA4CC9B118AB79C100C0FB84 /* ViewController.m */,
+				AA1D3B6A18B08D7B0057737C /* Annotation.h */,
+				AA1D3B6B18B08D7B0057737C /* Annotation.m */,
 				AAB963D218ADCDA300568875 /* Auth ViewController.h */,
 				AAB963D318ADCDA300568875 /* Auth ViewController.m */,
 				AA4CC9B318AB79C100C0FB84 /* Images.xcassets */,
@@ -266,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA1D3B6C18B08D7B0057737C /* Annotation.m in Sources */,
 				AA4CC9B218AB79C100C0FB84 /* ViewController.m in Sources */,
 				AAB963D418ADCDA300568875 /* Auth ViewController.m in Sources */,
 				AA4CC9A918AB79C100C0FB84 /* AppDelegate.m in Sources */,

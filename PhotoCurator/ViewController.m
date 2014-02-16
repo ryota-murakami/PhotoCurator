@@ -43,6 +43,7 @@
     searchBar.placeholder = @"場所/住所を検索";
     searchBar.delegate = self;
     self.navigationItem.titleView = searchBar;
+    searchBar.showsCancelButton = YES;
     
     //右上のボタン
     UIBarButtonItem *albumButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(albumButtonTapped:)];
@@ -90,15 +91,10 @@
 
 
 #pragma mark searchBar
-//サーチバーのデリゲートメソッド
--(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
-{
-    NSLog(@"検索開始");
-}
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-//キーボードを下げる
+
     [searchBar resignFirstResponder];
 
     //検索結果に座標を付与
@@ -129,6 +125,8 @@
     MKCoordinateRegion spot = MKCoordinateRegionMakeWithDistance(coordinate, 1000, 1000);
     [_MapView setRegion:spot animated:YES];
 }
+
+
 #pragma mark -
 
 
