@@ -46,6 +46,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="uMb-BA-Tdu"/>
                     <connections>
+                        <outlet property="MapView" destination="7GA-qx-Lxe" id="jqA-fR-EfN"/>
                         <segue destination="gfE-mn-EKL" kind="modal" identifier="Auth" id="8dC-ZU-gLd"/>
                     </connections>
                 </viewController>

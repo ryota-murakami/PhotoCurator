@@ -58,12 +58,14 @@
     //リクエスト送信
     recivedata = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
   
+    
     //リクエストエラーダイアログ
-    NSString *error_str = [error localizedDescription];
-    if (0<[error_str length]) {
+    NSString *errorMessage = [error localizedDescription];
+    if (0<[errorMessage length]) {
+        NSString *message = [NSString stringWithFormat:@"HTTPステータスコード:%d",response.statusCode];
         UIAlertView *alert = [[UIAlertView alloc]
                               initWithTitle : @"リクエストエラー"
-                              message : @"エラーが発生しました"
+                              message :message
                               delegate : nil
                               cancelButtonTitle : @"OK"
                               otherButtonTitles : nil];
@@ -71,10 +73,11 @@
     }
     
     
-    //レスポンスを文字列に変換
+    //受信データを文字列に変換
+    if(recivedata){
     recivestr = [[[NSString alloc] initWithData:recivedata encoding:NSUTF8StringEncoding]substringToIndex:2];
     
-    
+
     //認証処理
     if([recivestr isEqualToString:@"OK"]){
        
@@ -95,7 +98,7 @@
                                   otherButtonTitles : nil];
             [alert show];
         }
-    
+    }
     
 }
 

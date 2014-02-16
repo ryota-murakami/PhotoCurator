@@ -7,9 +7,11 @@
 //
 #import "Auth ViewController.h"
 
-//#import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
-@interface ViewController : UIViewController<Auth_ViewControllerDelegate,UISearchBarDelegate>
+#import <CoreLocation/CoreLocation.h>
+
+@interface ViewController : UIViewController<MKMapViewDelegate,Auth_ViewControllerDelegate,UISearchBarDelegate,CLLocationManagerDelegate>
 
 
 @end
