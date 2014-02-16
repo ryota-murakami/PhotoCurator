@@ -7,8 +7,12 @@
 //
 
 #import "ViewController.h"
+#import "Annotation.h"
 
 @interface ViewController ()
+{
+    Annotation *pin;
+}
 
 @property (weak, nonatomic) IBOutlet MKMapView *MapView;
 
@@ -43,7 +47,7 @@
     searchBar.placeholder = @"場所/住所を検索";
     searchBar.delegate = self;
     self.navigationItem.titleView = searchBar;
-    searchBar.showsCancelButton = YES;
+    
     
     //右上のボタン
     UIBarButtonItem *albumButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(albumButtonTapped:)];
@@ -92,6 +96,13 @@
 
 #pragma mark searchBar
 
+-(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    if(pin){
+        [_MapView removeAnnotation:pin];
+    }
+}
+
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
 
@@ -113,24 +124,52 @@
             CLPlacemark *place = placemark[0];
             CLLocationDegrees latitude = place.location.coordinate.latitude;//緯度
             CLLocationDegrees longitude = place.location.coordinate.longitude;//経度
-      
+            
+            //検索した場所へ移動
             [self goSearchPointLatitude:latitude longitude:longitude];
-        }}];
+            
+            //検索した場所へピンを表示
+            NSString *placeName = place.addressDictionary[@"FormattedAddressLines"][0];
+            pin = [[Annotation alloc]initWithCoordinate:place.location.coordinate title:placeName];
+            [_MapView addAnnotation:pin];
+        
+            }
+        }
+    ];
 }
 
 //検索した場所へ移動するメソッド
 -(void)goSearchPointLatitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude
 {
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(latitude, longitude);
-    MKCoordinateRegion spot = MKCoordinateRegionMakeWithDistance(coordinate, 1000, 1000);
+    MKCoordinateRegion spot = MKCoordinateRegionMakeWithDistance(coordinate, 2000, 2000);
     [_MapView setRegion:spot animated:YES];
 }
 
 
 #pragma mark -
 
+#pragma mark MKMapViewDelegate
 
-
-     
+//addAnnotationの直前にピンの形状を要求するメソッド
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    //現在地のアノテーションが表示される時はこのメソッドを無効化する
+    if([annotation.title isEqualToString:@"Current Location"]){
+        return nil;
+    }
+ 
+    NSString *identifier = @"MyPin";
+    MKPinAnnotationView *newPin =(MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+    
+    if(newPin == nil){
+        newPin = [[MKPinAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:identifier];
+        newPin.animatesDrop = YES;
+        newPin.pinColor = MKPinAnnotationColorRed;
+        newPin.canShowCallout = YES;
+    }
+    return newPin;
+}
+#pragma mark -
 
 @end
