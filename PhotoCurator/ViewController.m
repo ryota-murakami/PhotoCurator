@@ -34,7 +34,8 @@
     }
     
     [super viewDidLoad];
-	//マップの設定
+	
+    //マップの設定
     _MapView.delegate = self;
     _MapView.showsUserLocation = YES;
 
@@ -48,12 +49,17 @@
     UISearchBar *searchBar = [[UISearchBar alloc]init];
     searchBar.placeholder = @"場所/住所を検索";
     searchBar.delegate = self;
+    searchBar.searchBarStyle = UISearchBarStyleMinimal;
     self.navigationItem.titleView = searchBar;
 
-    
     //右上のボタン
     UIBarButtonItem *albumButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(albumButtonTapped:)];
     self.navigationItem.rightBarButtonItem = albumButton;
+    
+    //戻るボタン
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc]init];
+    backButton.title = @"戻る";
+    self.navigationItem.backBarButtonItem = backButton;
     
 }
 
@@ -64,20 +70,21 @@
 }
 
 #pragma mark Auth_ViewController
-
+//遷移先のdelegateにセット
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([[segue identifier] isEqualToString:@"Auth"]){
+        
+        [[segue destinationViewController]setDelegate:self];
+    }
+}
+//認証画面を閉じる
 -(void)authEnd:(Auth_ViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 #pragma mark -
 
-#pragma mark segue
-//ViewControllerを遷移後の画面のデリゲートにセットする
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    [[segue destinationViewController]setDelegate:self];
-}
-#pragma mark -
 
 #pragma mark photoViewController
 
@@ -91,7 +98,8 @@
 
 -(void)albumButtonTapped:(UIBarButtonItem *)sender
 {
-    NSLog(@"albumボタン");
+
+    [self performSegueWithIdentifier:@"album" sender:self];
 }
 #pragma mark -
 
@@ -116,7 +124,7 @@
         if(error){
             UIAlertView *alert = [[UIAlertView alloc]
                                   initWithTitle : @"検索エラー"
-                                  message : @"エラーが発生しました"
+                                  message : @"結果が見つかりません"
                                   delegate : nil
                                   cancelButtonTitle : @"OK"
                                   otherButtonTitles : nil];
@@ -175,7 +183,7 @@
 #pragma mark -
 
 #pragma mark ToolBar
-
+//現在地へ移動する
 - (IBAction)CurrentLocationButtonTapped:(id)sender {
     
     CLLocationDegrees lattitude = _MapView.userLocation.location.coordinate.latitude;

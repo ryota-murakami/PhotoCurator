@@ -64,6 +64,7 @@
                     <connections>
                         <outlet property="MapView" destination="7GA-qx-Lxe" id="jqA-fR-EfN"/>
                         <segue destination="gfE-mn-EKL" kind="modal" identifier="Auth" id="8dC-ZU-gLd"/>
+                        <segue destination="cb9-Ss-5Vr" kind="push" identifier="album" id="ZHg-zG-Vj0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -105,7 +106,36 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xrq-fI-Pif" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="580" y="599"/>
+            <point key="canvasLocation" x="49" y="587"/>
+        </scene>
+        <!--AlbumViewController-->
+        <scene sceneID="OOp-7w-rnb">
+            <objects>
+                <tableViewController id="cb9-Ss-5Vr" userLabel="AlbumViewController" customClass="AlbumViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="bIB-I6-qpy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="fAW-K3-Clh">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fAW-K3-Clh" id="9IT-l4-PNK">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="cb9-Ss-5Vr" id="kce-mX-fOq"/>
+                            <outlet property="delegate" destination="cb9-Ss-5Vr" id="82F-U1-0q5"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="4lO-yi-Ycr"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gey-um-PRt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1139" y="-145"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

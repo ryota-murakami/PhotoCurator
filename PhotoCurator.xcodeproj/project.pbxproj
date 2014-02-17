@@ -25,6 +25,7 @@
 		AA4CC9C718AB79C100C0FB84 /* PhotoCuratorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4CC9C618AB79C100C0FB84 /* PhotoCuratorTests.m */; };
 		AA4CC9D118AB7A9800C0FB84 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4CC9D018AB7A9800C0FB84 /* CoreLocation.framework */; };
 		AA4CC9D318AB7AAD00C0FB84 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4CC9D218AB7AAD00C0FB84 /* MapKit.framework */; };
+		AA6C105618B1BB1D00CD5239 /* AlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C105518B1BB1D00CD5239 /* AlbumViewController.m */; };
 		AAB963D418ADCDA300568875 /* Auth ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB963D318ADCDA300568875 /* Auth ViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,8 @@
 		AA4CC9C618AB79C100C0FB84 /* PhotoCuratorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoCuratorTests.m; sourceTree = "<group>"; };
 		AA4CC9D018AB7A9800C0FB84 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AA4CC9D218AB7AAD00C0FB84 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		AA6C105418B1BB1D00CD5239 /* AlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumViewController.h; sourceTree = "<group>"; };
+		AA6C105518B1BB1D00CD5239 /* AlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumViewController.m; sourceTree = "<group>"; };
 		AAB963D218ADCDA300568875 /* Auth ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Auth ViewController.h"; sourceTree = "<group>"; };
 		AAB963D318ADCDA300568875 /* Auth ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Auth ViewController.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -138,6 +141,8 @@
 				AA1D3B6B18B08D7B0057737C /* Annotation.m */,
 				AAB963D218ADCDA300568875 /* Auth ViewController.h */,
 				AAB963D318ADCDA300568875 /* Auth ViewController.m */,
+				AA6C105418B1BB1D00CD5239 /* AlbumViewController.h */,
+				AA6C105518B1BB1D00CD5239 /* AlbumViewController.m */,
 				AA4CC9B318AB79C100C0FB84 /* Images.xcassets */,
 				AA4CC99F18AB79C100C0FB84 /* Supporting Files */,
 			);
@@ -273,6 +278,7 @@
 			files = (
 				AA1D3B6C18B08D7B0057737C /* Annotation.m in Sources */,
 				AA4CC9B218AB79C100C0FB84 /* ViewController.m in Sources */,
+				AA6C105618B1BB1D00CD5239 /* AlbumViewController.m in Sources */,
 				AAB963D418ADCDA300568875 /* Auth ViewController.m in Sources */,
 				AA4CC9A918AB79C100C0FB84 /* AppDelegate.m in Sources */,
 				AA4CC9A518AB79C100C0FB84 /* main.m in Sources */,
