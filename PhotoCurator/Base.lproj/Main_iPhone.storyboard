@@ -35,6 +35,10 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7GA-qx-Lxe">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="ixo-T9-TUd" appends="YES" id="c3x-f1-Cp9"/>
+                                </connections>
                             </mapView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.80000000000000016" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qbv-yZ-fYX">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
@@ -68,6 +72,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ixo-T9-TUd">
+                    <connections>
+                        <action selector="mapViewTapped:" destination="vXZ-lx-hvc" id="cO8-Cs-nbg"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="580" y="-145"/>
         </scene>
@@ -83,14 +92,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="利用規約" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUg-zd-ADH">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="利用規約" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUg-zd-ADH">
                                 <rect key="frame" x="119" y="119" width="82" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="82" id="UXf-F1-0pl"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Idm-tF-UVK">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Idm-tF-UVK">
                                 <rect key="frame" x="20" y="307" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="利用規約に同意してアプリを開始する">
@@ -102,6 +114,13 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Idm-tF-UVK" firstAttribute="centerX" secondItem="LUg-zd-ADH" secondAttribute="centerX" id="CtZ-iL-1QC"/>
+                            <constraint firstItem="Idm-tF-UVK" firstAttribute="leading" secondItem="wTa-pS-Pyt" secondAttribute="leading" constant="20" symbolic="YES" id="IuZ-bL-Ohr"/>
+                            <constraint firstAttribute="trailing" secondItem="Idm-tF-UVK" secondAttribute="trailing" constant="20" symbolic="YES" id="OfA-SJ-EH0"/>
+                            <constraint firstItem="LUg-zd-ADH" firstAttribute="top" secondItem="8ym-bE-YrW" secondAttribute="bottom" constant="99" id="PPM-b2-WM7"/>
+                            <constraint firstItem="5EG-OJ-oN5" firstAttribute="top" secondItem="Idm-tF-UVK" secondAttribute="bottom" constant="231" id="zio-6E-JqQ"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xrq-fI-Pif" userLabel="First Responder" sceneMemberID="firstResponder"/>

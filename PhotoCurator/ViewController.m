@@ -15,8 +15,12 @@
 }
 
 @property (weak, nonatomic) IBOutlet MKMapView *MapView;
+@property (strong,nonatomic) UISearchBar *searchBar;
 
+//左下の現在地ボタン
 - (IBAction)CurrentLocationButtonTapped:(id)sender;
+
+- (IBAction)mapViewTapped:(id)sender;
 
 
 @end
@@ -46,11 +50,12 @@
     self.navigationItem.leftBarButtonItem = photoButton;
     
     //検索バー
-    UISearchBar *searchBar = [[UISearchBar alloc]init];
-    searchBar.placeholder = @"場所/住所を検索";
-    searchBar.delegate = self;
-    searchBar.searchBarStyle = UISearchBarStyleMinimal;
-    self.navigationItem.titleView = searchBar;
+    _searchBar = [[UISearchBar alloc]init];
+    _searchBar.placeholder = @"場所/住所を検索";
+    _searchBar.delegate = self;
+    _searchBar.searchBarStyle = UISearchBarStyleMinimal;
+    _searchBar.keyboardType = UIKeyboardAppearanceDark;
+    self.navigationItem.titleView = _searchBar;
 
     //右上のボタン
     UIBarButtonItem *albumButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(albumButtonTapped:)];
@@ -112,6 +117,15 @@
         [_MapView removeAnnotation:pin];
     }
 }
+
+//背面タップでキーボードを消す
+- (IBAction)mapViewTapped:(id)sender {
+    
+    if([self.searchBar isFirstResponder]){
+    [self.searchBar resignFirstResponder];
+    }
+}
+
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
@@ -195,6 +209,7 @@
     [_MapView setRegion:region animated:YES];
     
 }
+
 #pragma mark -
 @end
 
