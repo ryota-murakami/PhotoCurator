@@ -9,7 +9,9 @@
 #import "AlbumViewController.h"
 
 @interface AlbumViewController ()
-
+{
+    NSMutableDictionary *albumList;
+}
 @end
 
 @implementation AlbumViewController
@@ -43,19 +45,15 @@
 }
 
 #pragma mark - Table view data source
-
+//セクション数
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
-
+//アルバム数分の行を作る
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
-    // Return the number of rows in the section.
-    return 0;
+    return albumList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

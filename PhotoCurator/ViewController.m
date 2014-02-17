@@ -54,7 +54,7 @@
     _searchBar.placeholder = @"場所/住所を検索";
     _searchBar.delegate = self;
     _searchBar.searchBarStyle = UISearchBarStyleMinimal;
-    _searchBar.keyboardType = UIKeyboardAppearanceDark;
+    _searchBar.keyboardType = UIKeyboardAppearanceDark;/*反映されていない*/
     self.navigationItem.titleView = _searchBar;
 
     //右上のボタン
@@ -65,7 +65,9 @@
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc]init];
     backButton.title = @"戻る";
     self.navigationItem.backBarButtonItem = backButton;
-    
+
+        
+
 }
 
 - (void)didReceiveMemoryWarning
