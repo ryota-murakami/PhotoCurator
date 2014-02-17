@@ -16,6 +16,8 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *MapView;
 
+- (IBAction)CurrentLocationButtonTapped:(id)sender;
+
 
 @end
 
@@ -47,7 +49,7 @@
     searchBar.placeholder = @"場所/住所を検索";
     searchBar.delegate = self;
     self.navigationItem.titleView = searchBar;
-    
+
     
     //右上のボタン
     UIBarButtonItem *albumButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(albumButtonTapped:)];
@@ -126,7 +128,7 @@
             CLLocationDegrees longitude = place.location.coordinate.longitude;//経度
             
             //検索した場所へ移動
-            [self goSearchPointLatitude:latitude longitude:longitude];
+            [self goRegionPointLatitude:latitude longitude:longitude];
             
             //検索した場所へピンを表示
             NSString *placeName = place.addressDictionary[@"FormattedAddressLines"][0];
@@ -138,11 +140,11 @@
     ];
 }
 
-//検索した場所へ移動するメソッド
--(void)goSearchPointLatitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude
+//指定座標へ移動するメソッド
+-(void)goRegionPointLatitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude
 {
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(latitude, longitude);
-    MKCoordinateRegion spot = MKCoordinateRegionMakeWithDistance(coordinate, 2000, 2000);
+    MKCoordinateRegion spot = MKCoordinateRegionMakeWithDistance(coordinate, 500, 500);
     [_MapView setRegion:spot animated:YES];
 }
 
@@ -172,4 +174,41 @@
 }
 #pragma mark -
 
+#pragma mark ToolBar
+
+- (IBAction)CurrentLocationButtonTapped:(id)sender {
+    
+    CLLocationDegrees lattitude = _MapView.userLocation.location.coordinate.latitude;
+    CLLocationDegrees longitude = _MapView.userLocation.location.coordinate.longitude;
+    CLLocationCoordinate2D location = CLLocationCoordinate2DMake(lattitude, longitude);
+    
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(location,2000,2000);
+
+    [_MapView setRegion:region animated:YES];
+    
+}
+#pragma mark -
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
