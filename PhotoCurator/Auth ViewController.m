@@ -45,7 +45,7 @@
 - (IBAction)tapButton:(id)sender {
     
     
-    url = [NSString stringWithFormat:@"http://tokyorefrain.local/photocurator/auth.php"];
+    url = [NSString stringWithFormat:@"http://tokyorefrain.local/auth.php"];
     senddata = [@"agree" dataUsingEncoding:NSUTF8StringEncoding];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
