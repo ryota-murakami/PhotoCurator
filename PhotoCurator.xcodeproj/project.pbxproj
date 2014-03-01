@@ -17,7 +17,7 @@
 		AA4CC9AC18AB79C100C0FB84 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA4CC9AA18AB79C100C0FB84 /* Main_iPhone.storyboard */; };
 		AA4CC9AF18AB79C100C0FB84 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA4CC9AD18AB79C100C0FB84 /* Main_iPad.storyboard */; };
 		AA4CC9B218AB79C100C0FB84 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4CC9B118AB79C100C0FB84 /* ViewController.m */; };
-		AA4CC9B418AB79C100C0FB84 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA4CC9B318AB79C100C0FB84 /* Images.xcassets */; };
+		AA4CC9B418AB79C100C0FB84 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA4CC9B318AB79C100C0FB84 /* images.xcassets */; };
 		AA4CC9BB18AB79C100C0FB84 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4CC9BA18AB79C100C0FB84 /* XCTest.framework */; };
 		AA4CC9BC18AB79C100C0FB84 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4CC99818AB79C100C0FB84 /* Foundation.framework */; };
 		AA4CC9BD18AB79C100C0FB84 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4CC99C18AB79C100C0FB84 /* UIKit.framework */; };
@@ -25,7 +25,9 @@
 		AA4CC9C718AB79C100C0FB84 /* PhotoCuratorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4CC9C618AB79C100C0FB84 /* PhotoCuratorTests.m */; };
 		AA4CC9D118AB7A9800C0FB84 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4CC9D018AB7A9800C0FB84 /* CoreLocation.framework */; };
 		AA4CC9D318AB7AAD00C0FB84 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4CC9D218AB7AAD00C0FB84 /* MapKit.framework */; };
+		AA4ED6C318BF110C0011A974 /* LocationAlubumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4ED6C218BF110C0011A974 /* LocationAlubumViewController.m */; };
 		AA6C105618B1BB1D00CD5239 /* AlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6C105518B1BB1D00CD5239 /* AlbumViewController.m */; };
+		AA981E8118BDE69B00C5D793 /* AlbumData.m in Sources */ = {isa = PBXBuildFile; fileRef = AA981E8018BDE69B00C5D793 /* AlbumData.m */; };
 		AAB963D418ADCDA300568875 /* Auth ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAB963D318ADCDA300568875 /* Auth ViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -56,7 +58,7 @@
 		AA4CC9AE18AB79C100C0FB84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		AA4CC9B018AB79C100C0FB84 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		AA4CC9B118AB79C100C0FB84 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		AA4CC9B318AB79C100C0FB84 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		AA4CC9B318AB79C100C0FB84 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
 		AA4CC9B918AB79C100C0FB84 /* PhotoCuratorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoCuratorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA4CC9BA18AB79C100C0FB84 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		AA4CC9C218AB79C100C0FB84 /* PhotoCuratorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PhotoCuratorTests-Info.plist"; sourceTree = "<group>"; };
@@ -64,8 +66,12 @@
 		AA4CC9C618AB79C100C0FB84 /* PhotoCuratorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoCuratorTests.m; sourceTree = "<group>"; };
 		AA4CC9D018AB7A9800C0FB84 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AA4CC9D218AB7AAD00C0FB84 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		AA4ED6C118BF110B0011A974 /* LocationAlubumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationAlubumViewController.h; sourceTree = "<group>"; };
+		AA4ED6C218BF110C0011A974 /* LocationAlubumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationAlubumViewController.m; sourceTree = "<group>"; };
 		AA6C105418B1BB1D00CD5239 /* AlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumViewController.h; sourceTree = "<group>"; };
 		AA6C105518B1BB1D00CD5239 /* AlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumViewController.m; sourceTree = "<group>"; };
+		AA981E7F18BDE69B00C5D793 /* AlbumData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumData.h; sourceTree = "<group>"; };
+		AA981E8018BDE69B00C5D793 /* AlbumData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumData.m; sourceTree = "<group>"; };
 		AAB963D218ADCDA300568875 /* Auth ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Auth ViewController.h"; sourceTree = "<group>"; };
 		AAB963D318ADCDA300568875 /* Auth ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Auth ViewController.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -143,7 +149,11 @@
 				AAB963D318ADCDA300568875 /* Auth ViewController.m */,
 				AA6C105418B1BB1D00CD5239 /* AlbumViewController.h */,
 				AA6C105518B1BB1D00CD5239 /* AlbumViewController.m */,
-				AA4CC9B318AB79C100C0FB84 /* Images.xcassets */,
+				AA981E7F18BDE69B00C5D793 /* AlbumData.h */,
+				AA981E8018BDE69B00C5D793 /* AlbumData.m */,
+				AA4ED6C118BF110B0011A974 /* LocationAlubumViewController.h */,
+				AA4ED6C218BF110C0011A974 /* LocationAlubumViewController.m */,
+				AA4CC9B318AB79C100C0FB84 /* images.xcassets */,
 				AA4CC99F18AB79C100C0FB84 /* Supporting Files */,
 			);
 			path = PhotoCurator;
@@ -255,7 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA4CC9AF18AB79C100C0FB84 /* Main_iPad.storyboard in Resources */,
-				AA4CC9B418AB79C100C0FB84 /* Images.xcassets in Resources */,
+				AA4CC9B418AB79C100C0FB84 /* images.xcassets in Resources */,
 				AA4CC9AC18AB79C100C0FB84 /* Main_iPhone.storyboard in Resources */,
 				AA4CC9A318AB79C100C0FB84 /* InfoPlist.strings in Resources */,
 			);
@@ -279,9 +289,11 @@
 				AA1D3B6C18B08D7B0057737C /* Annotation.m in Sources */,
 				AA4CC9B218AB79C100C0FB84 /* ViewController.m in Sources */,
 				AA6C105618B1BB1D00CD5239 /* AlbumViewController.m in Sources */,
+				AA981E8118BDE69B00C5D793 /* AlbumData.m in Sources */,
 				AAB963D418ADCDA300568875 /* Auth ViewController.m in Sources */,
 				AA4CC9A918AB79C100C0FB84 /* AppDelegate.m in Sources */,
 				AA4CC9A518AB79C100C0FB84 /* main.m in Sources */,
+				AA4ED6C318BF110C0011A974 /* LocationAlubumViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

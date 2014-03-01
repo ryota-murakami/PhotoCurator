@@ -1,26 +1,47 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eF2-0U-aVN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="bYd-O6-kv5">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="bf1-OL-BXf">
+        <!--Tab Bar Controller-->
+        <scene sceneID="ZMT-OK-IbX">
             <objects>
-                <navigationController definesPresentationContext="YES" id="eF2-0U-aVN" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" alpha="0.0" contentMode="scaleToFill" id="D7Z-O0-JgS">
+                <tabBarController definesPresentationContext="YES" id="bYd-O6-kv5" sceneMemberID="viewController">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="obb-3W-iML">
+                        <rect key="frame" x="129" y="330" width="163" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="kOs-Hj-MHI" kind="relationship" relationship="viewControllers" id="23t-m9-6Gj"/>
+                        <segue destination="MdP-bc-fsK" kind="relationship" relationship="viewControllers" id="hvJ-yr-p7C"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uyf-p5-xlR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-357" y="-218"/>
+        </scene>
+        <!--Navigation Controller - Item-->
+        <scene sceneID="XHl-Zw-eWe">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="kOs-Hj-MHI" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="nRp-Ov-zeJ"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="c6W-H2-J9k">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.20011014660000001" green="1" blue="0.87846375970000001" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="Ax9-5j-QRo"/>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="hOX-8t-Y6S"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="D4Y-UC-Kjd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O4f-6y-pQB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="49" y="-145"/>
+            <point key="canvasLocation" x="116" y="-218"/>
         </scene>
-        <!--View Controller-->
+        <!--View Controller - Title-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
@@ -40,35 +61,37 @@
                                     <outletCollection property="gestureRecognizers" destination="ixo-T9-TUd" appends="YES" id="c3x-f1-Cp9"/>
                                 </connections>
                             </mapView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.80000000000000016" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qbv-yZ-fYX">
-                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items>
-                                    <barButtonItem systemItem="play" id="Emg-su-ZMQ">
-                                        <connections>
-                                            <action selector="CurrentLocationButtonTapped:" destination="vXZ-lx-hvc" id="qhN-XZ-7oT"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
+                            <searchBar alpha="0.59999999999999998" contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sEJ-Zm-0IO">
+                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="Qbv-yZ-fYX" firstAttribute="leading" secondItem="7GA-qx-Lxe" secondAttribute="leading" id="3tf-3d-2YL"/>
-                            <constraint firstItem="Qbv-yZ-fYX" firstAttribute="trailing" secondItem="7GA-qx-Lxe" secondAttribute="trailing" id="IdX-y4-CAH"/>
-                            <constraint firstItem="Qbv-yZ-fYX" firstAttribute="bottom" secondItem="7GA-qx-Lxe" secondAttribute="bottom" id="P9J-Uc-Kji"/>
                             <constraint firstAttribute="trailing" secondItem="7GA-qx-Lxe" secondAttribute="trailing" id="TOz-6v-26w"/>
                             <constraint firstItem="7GA-qx-Lxe" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="gun-HG-AMn"/>
                             <constraint firstItem="7GA-qx-Lxe" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="irf-3c-cgZ"/>
                             <constraint firstAttribute="bottom" secondItem="7GA-qx-Lxe" secondAttribute="bottom" id="r0F-9o-qMS"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="uMb-BA-Tdu"/>
+                    <tabBarItem key="tabBarItem" title="マップ" image="map" id="yzx-GH-xqy"/>
+                    <navigationItem key="navigationItem" title="Title" id="3ae-l3-Q5D">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="MaF-Rg-8vG">
+                            <connections>
+                                <action selector="searchButtontapped:" destination="vXZ-lx-hvc" id="TSv-9x-32v"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="MapView" destination="7GA-qx-Lxe" id="jqA-fR-EfN"/>
+                        <outlet property="searchBar" destination="sEJ-Zm-0IO" id="QVr-Aq-zAY"/>
                         <segue destination="gfE-mn-EKL" kind="modal" identifier="Auth" id="8dC-ZU-gLd"/>
-                        <segue destination="cb9-Ss-5Vr" kind="push" identifier="album" id="ZHg-zG-Vj0"/>
+                        <segue destination="Sv0-2k-ueq" kind="push" identifier="Detail" id="iyR-2v-mwX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -78,7 +101,36 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="580" y="-145"/>
+            <point key="canvasLocation" x="619" y="-218"/>
+        </scene>
+        <!--LocationAlbumView Controller-->
+        <scene sceneID="pXL-c3-48y">
+            <objects>
+                <tableViewController id="Sv0-2k-ueq" userLabel="LocationAlbumView Controller" customClass="LocationAlubumViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Cet-f5-ipu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="dK8-2r-8w7">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dK8-2r-8w7" id="wea-1f-qbC">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Sv0-2k-ueq" id="vTC-DK-mCU"/>
+                            <outlet property="delegate" destination="Sv0-2k-ueq" id="s1Y-Wl-9wI"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="joa-4n-goO"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gCl-NH-oef" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1120" y="-224"/>
         </scene>
         <!--Auth Controller-->
         <scene sceneID="b6E-0w-M7O">
@@ -127,6 +179,22 @@
             </objects>
             <point key="canvasLocation" x="49" y="587"/>
         </scene>
+        <!--Navigation Controller - アルバム-->
+        <scene sceneID="hUu-ry-smk">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="MdP-bc-fsK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="アルバム" image="album" id="OKL-u9-0Pz"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lde-jC-e40">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="cb9-Ss-5Vr" kind="relationship" relationship="rootViewController" id="IMe-JY-e4B"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LVK-P8-za2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="127" y="-963"/>
+        </scene>
         <!--AlbumViewController-->
         <scene sceneID="OOp-7w-rnb">
             <objects>
@@ -150,13 +218,22 @@
                             <outlet property="delegate" destination="cb9-Ss-5Vr" id="82F-U1-0q5"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="4lO-yi-Ycr"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="4lO-yi-Ycr">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="45v-fE-N2k"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gey-um-PRt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1139" y="-145"/>
+            <point key="canvasLocation" x="635" y="-979"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="album" width="30" height="30"/>
+        <image name="map" width="30" height="30"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

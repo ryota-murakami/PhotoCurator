@@ -1,20 +1,20 @@
 //
-//  AlbumViewController.m
+//  LocationAlubumViewController.m
 //  PhotoCurator
 //
-//  Created by tokyorefrain on 2014/02/17.
+//  Created by tokyorefrain on 2014/02/27.
 //  Copyright (c) 2014年 tokyorefrain. All rights reserved.
 //
 
-#import "AlbumViewController.h"
+#import "LocationAlubumViewController.h"
 
-@interface AlbumViewController ()
+@interface LocationAlubumViewController ()
 {
-    NSMutableDictionary *albumList;
+    NSMutableArray *albumList;
 }
 @end
 
-@implementation AlbumViewController
+@implementation LocationAlubumViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -28,13 +28,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     //タイトル
-    self.navigationItem.title = @"アルバム一覧";
+    self.navigationItem.title = @"アルバム";
     
-    //編集ボタン
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //右上のボタン
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addbuttonTapped)];
+    self.navigationItem.rightBarButtonItem = addButton;
+
+
+
     
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,23 +49,33 @@
 }
 
 #pragma mark - Table view data source
-//セクション数
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+
+    // Return the number of sections.
     return 1;
 }
-//アルバム数分の行を作る
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+
+    // Return the number of rows in the section.
     return albumList.count;
 }
 
+//新規アルバム名のセルを追加
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    [albumList enumerateObjectsUsingBlock:^(AlbumData *album, NSUInteger idx, BOOL *stop){
+        if(idx == indexPath.row){
+            cell.textLabel.text = album.title;
+            *stop = YES;
+        }
+    }];
     
     return cell;
 }
@@ -115,5 +130,66 @@
 }
 
  */
+
+
+
+//＋ボタンから新規アルバムを作成
+-(void)addbuttonTapped
+{
+    UIAlertView *nameAlert = [[UIAlertView alloc]initWithTitle:@"アルバム名を入力して下さい" message:@"20文字以内です" delegate:self cancelButtonTitle:@"キャンセル" otherButtonTitles:@"作成", nil];
+    nameAlert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    
+    [nameAlert show];
+}
+#pragma mark UIAlertViewDelegate
+
+//作成ボタンの文字数制限
+-(BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView
+{
+    UITextField *fld =[alertView textFieldAtIndex:0];
+    if([fld.text length] <= 20 && [fld.text length] >= 1){
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
+//作成ボタンタップ後
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+            
+        case 1:
+           
+            if(!albumList){
+                albumList = [[NSMutableArray alloc] init];
+            }
+            
+            //新規アルバムに名前と位置情報をセット
+            AlbumData *newAlbum = [[AlbumData alloc]initWithTitle:[alertView textFieldAtIndex:0].text location:_pinCoordinate];
+            
+            //セルの挿入位置
+            [albumList insertObject:newAlbum atIndex:0];
+            
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+            [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            
+            break;
+    }
+
+}
+
+#pragma mark -
+
+
+
+//ピンの位置を取得
+-(void)pinCoordinate:(CLLocationCoordinate2D)coordinate
+{
+    _pinCoordinate = coordinate;
+}
+
+
+
 
 @end

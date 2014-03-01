@@ -8,19 +8,20 @@
 
 #import "ViewController.h"
 #import "Annotation.h"
+#import "LocationAlubumViewController.h"
 
 @interface ViewController ()
 {
     Annotation *pin;
 }
 
+//マップビュー
 @property (weak, nonatomic) IBOutlet MKMapView *MapView;
-@property (strong,nonatomic) UISearchBar *searchBar;
+//サーチバー
+@property (strong,nonatomic) IBOutlet UISearchBar *searchBar;
 
-//左下の現在地ボタン
-- (IBAction)CurrentLocationButtonTapped:(id)sender;
 
-- (IBAction)mapViewTapped:(id)sender;
+
 
 
 @end
@@ -42,29 +43,27 @@
     //マップの設定
     _MapView.delegate = self;
     _MapView.showsUserLocation = YES;
-
+    _MapView.userLocation.title = @"現在地";
     
+    //タイトル
+    self.navigationItem.title = @"マップ";
     
-    //左上のボタン
-    UIBarButtonItem *photoButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(photoButtonTapped:)];
-    self.navigationItem.leftBarButtonItem = photoButton;
+    //現在地ボタン
+    UIBarButtonItem *currentButton = [[UIBarButtonItem alloc ]initWithBarButtonSystemItem:100 target:self action:@selector(CurrentButtonTapped:)];
+    self.navigationItem.leftBarButtonItem = currentButton;
+    
     
     //検索バー
-    _searchBar = [[UISearchBar alloc]init];
     _searchBar.placeholder = @"場所/住所を検索";
     _searchBar.delegate = self;
-    _searchBar.searchBarStyle = UISearchBarStyleMinimal;
-    _searchBar.keyboardType = UIKeyboardAppearanceDark;/*反映されていない*/
-    self.navigationItem.titleView = _searchBar;
-
-    //右上のボタン
-    UIBarButtonItem *albumButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(albumButtonTapped:)];
-    self.navigationItem.rightBarButtonItem = albumButton;
+    _searchBar.searchBarStyle = UISearchBarStyleDefault;
     
-    //戻るボタン
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc]init];
-    backButton.title = @"戻る";
-    self.navigationItem.backBarButtonItem = backButton;
+    _searchBar.hidden = YES;
+    _searchBar.alpha = 0;
+    _searchBar.showsCancelButton = YES;
+    
+
+   
 
         
 
@@ -76,15 +75,28 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark Auth_ViewController
-//遷移先のdelegateにセット
+
+
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    //認証画面
     if([[segue identifier] isEqualToString:@"Auth"]){
         
         [[segue destinationViewController]setDelegate:self];
     }
+
+    if([[segue identifier] isEqualToString:@"Detail"]){
+        LocationAlubumViewController *locationAlbumViewController = [segue destinationViewController];
+        locationAlbumViewController.pinCoordinate = pin.coordinate;
+    }
+
+
+
 }
+
+#pragma mark Auth_ViewControllerDetegate
+
 //認証画面を閉じる
 -(void)authEnd:(Auth_ViewController *)controller
 {
@@ -93,46 +105,36 @@
 #pragma mark -
 
 
-#pragma mark photoViewController
-
--(void)photoButtonTapped:(UIBarButtonItem*)sender
-{
-    NSLog(@"photoボタン");
-}
-#pragma mark -
-
-#pragma mark albumViewContoroller
-
--(void)albumButtonTapped:(UIBarButtonItem *)sender
-{
-
-    [self performSegueWithIdentifier:@"album" sender:self];
-}
-#pragma mark -
-
 
 #pragma mark searchBar
-
+//検索開始時に前回の検索結果をクリア
 -(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
     if(pin){
         [_MapView removeAnnotation:pin];
     }
 }
+//キャンセルボタンタップでサーチバーを隠す
+-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [_searchBar resignFirstResponder];
+    [UIView animateWithDuration:0.3 animations:^{_searchBar.alpha = 0;} completion:^(BOOL finished){_searchBar.hidden = !_searchBar.hidden;}];
+}
 
 //背面タップでキーボードを消す
 - (IBAction)mapViewTapped:(id)sender {
-    
-    if([self.searchBar isFirstResponder]){
-    [self.searchBar resignFirstResponder];
+    if([_searchBar isFirstResponder]){
+    [_searchBar resignFirstResponder];
+    [UIView animateWithDuration:0.3 animations:^{_searchBar.alpha = 0;} completion:^(BOOL finished){_searchBar.hidden = !_searchBar.hidden;}];
     }
 }
 
-
+//検索ボタンタップ時
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
 
-    [searchBar resignFirstResponder];
+    [_searchBar resignFirstResponder];
+    [UIView animateWithDuration:0.3 animations:^{_searchBar.alpha = 0;} completion:^(BOOL finished){_searchBar.hidden = !_searchBar.hidden;}];
 
     //検索結果に座標を付与
     CLGeocoder *geocoder = [[CLGeocoder alloc]init];
@@ -181,7 +183,7 @@
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
     //現在地のアノテーションが表示される時はこのメソッドを無効化する
-    if([annotation.title isEqualToString:@"Current Location"]){
+    if([annotation.title isEqualToString:@"現在地"]){
         return nil;
     }
  
@@ -198,9 +200,9 @@
 }
 #pragma mark -
 
-#pragma mark ToolBar
+#pragma mark NavigationBar
 //現在地へ移動する
-- (IBAction)CurrentLocationButtonTapped:(id)sender {
+- (void)CurrentButtonTapped:(id)sender {
     
     CLLocationDegrees lattitude = _MapView.userLocation.location.coordinate.latitude;
     CLLocationDegrees longitude = _MapView.userLocation.location.coordinate.longitude;
@@ -212,7 +214,48 @@
     
 }
 
+//検索ボタンでサーチバーを表示/非表示
+- (IBAction)searchButtontapped:(id)sender {
+    
+    if([_searchBar isFirstResponder]){
+        
+        [_searchBar resignFirstResponder];
+        [UIView animateWithDuration:0.3 animations:^{_searchBar.alpha = 0;} completion:^(BOOL finished){_searchBar.hidden = !_searchBar.hidden;}];
+        
+    }else{
+    [_searchBar becomeFirstResponder];
+    
+    _searchBar.hidden = !_searchBar.hidden;
+    [UIView animateWithDuration:0.3 animations:^{_searchBar.alpha = 1.0;}];
+    }
+}
+
 #pragma mark -
+
+#pragma mark MKMapviewDekegate
+
+//ピンに詳細ボタンを追加
+- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views {
+  
+    [views enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL* stop) {
+        if(![((MKAnnotationView*)obj).annotation.title isEqualToString:@"現在地"]){
+        ((MKAnnotationView*)obj).rightCalloutAccessoryView
+        = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        }
+        }];
+    
+}
+
+//詳細画面へ遷移
+-(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    
+    [self performSegueWithIdentifier:@"Detail" sender:self];
+}
+
+
+#pragma mark -
+
 @end
 
 
