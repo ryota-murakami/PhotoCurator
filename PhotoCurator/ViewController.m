@@ -77,15 +77,16 @@
 
 
 
-
+//画面遷移直前に行われる処理
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    //認証画面
+    //認証画面のデリゲートにselfをセット
     if([[segue identifier] isEqualToString:@"Auth"]){
         
         [[segue destinationViewController]setDelegate:self];
     }
 
+    //locationAlbumviewへピンの位置を引き渡す
     if([[segue identifier] isEqualToString:@"Detail"]){
         LocationAlubumViewController *locationAlbumViewController = [segue destinationViewController];
         locationAlbumViewController.pinCoordinate = pin.coordinate;
