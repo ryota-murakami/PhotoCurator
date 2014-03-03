@@ -43,9 +43,27 @@
 //ピンの座標に既にあるアルバムを読み込む
 -(void)viewWillAppear:(BOOL)animated
 {
+
+    //USerDefaultに保存したインスタンス変数_albumListを読み込む
     NSUserDefaults *database = [NSUserDefaults standardUserDefaults];
     NSData *data = [database dataForKey:@"albumList"];
-    _albumList = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    NSMutableArray *allAlbumList = [[NSMutableArray alloc]init];
+    allAlbumList = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
+    if(!_albumList){
+        _albumList = [[NSMutableArray alloc]init];
+    }
+    
+    //ピンの座標とlocationプロパティが同じアルバムを_albumListに抽出
+    for(AlbumData *albumdata in allAlbumList){
+        
+        if(albumdata.location.latitude == _pinCoordinate.latitude && albumdata.location.longitude == _pinCoordinate.longitude){
+            NSLog(@"%@",albumdata.title);
+            [_albumList addObject:albumdata];
+            NSLog(@"%d",_albumList.count);
+        }
+    }
+    
 
 }
 
@@ -71,7 +89,7 @@
     return _albumList.count;
 }
 
-//新規アルバム名のセルを追加
+//アルバム名のセルを追加
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
