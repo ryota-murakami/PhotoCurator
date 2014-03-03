@@ -10,7 +10,7 @@
 
 @interface AlbumViewController ()
 {
-    NSMutableDictionary *albumList;
+    NSMutableDictionary *_albumList;
 }
 @end
 
@@ -52,7 +52,7 @@
 //アルバム数分の行を作る
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return albumList.count;
+    return _albumList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

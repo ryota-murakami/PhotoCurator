@@ -11,8 +11,8 @@
 
 @interface Auth_ViewController ()
 {
-    NSData *senddata,*recivedata;
-    NSString *url,*recivestr;
+    NSData *_senddata,*_recivedata;
+    NSString *_url,*_recivestr;
 }
 - (IBAction)tapButton:(id)sender;
 
@@ -45,18 +45,18 @@
 - (IBAction)tapButton:(id)sender {
     
     
-    url = [NSString stringWithFormat:@"http://tokyorefrain.local/photocurator/auth.php"];
-    senddata = [@"agree" dataUsingEncoding:NSUTF8StringEncoding];
+    _url = [NSString stringWithFormat:@"http://tokyorefrain.local/photocurator/auth.php"];
+    _senddata = [@"agree" dataUsingEncoding:NSUTF8StringEncoding];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]init];
-    [request setURL:[NSURL URLWithString:url]];
+    [request setURL:[NSURL URLWithString:_url]];
     [request setHTTPMethod:@"POST"];
-    [request setHTTPBody:senddata];
+    [request setHTTPBody:_senddata];
     NSHTTPURLResponse *response = nil;
     NSError *error = nil;
     
     //リクエスト送信
-    recivedata = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    _recivedata = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
   
     
     //リクエストエラーダイアログ
@@ -74,12 +74,12 @@
     
     
     //受信データを文字列に変換
-    if(recivedata){
-    recivestr = [[[NSString alloc] initWithData:recivedata encoding:NSUTF8StringEncoding]substringToIndex:2];
+    if(_recivedata){
+    _recivestr = [[[NSString alloc] initWithData:_recivedata encoding:NSUTF8StringEncoding]substringToIndex:2];
     
 
     //認証処理
-    if([recivestr isEqualToString:@"OK"]){
+    if([_recivestr isEqualToString:@"OK"]){
        
         NSUserDefaults *database;
         database = [NSUserDefaults standardUserDefaults];

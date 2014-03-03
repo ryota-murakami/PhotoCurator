@@ -54,13 +54,11 @@
         _albumList = [[NSMutableArray alloc]init];
     }
     
-    //ピンの座標とlocationプロパティが同じアルバムを_albumListに抽出
+    //ピンの座標とlocationプロパティが同じアルバムをインスタンス変数_albumListに抽出
     for(AlbumData *albumdata in allAlbumList){
         
         if(albumdata.location.latitude == _pinCoordinate.latitude && albumdata.location.longitude == _pinCoordinate.longitude){
-            NSLog(@"%@",albumdata.title);
-            [_albumList addObject:albumdata];
-            NSLog(@"%d",_albumList.count);
+                [_albumList addObject:albumdata];
         }
     }
     

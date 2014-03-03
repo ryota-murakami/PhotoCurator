@@ -12,7 +12,7 @@
 
 @interface ViewController ()
 {
-    Annotation *pin;
+    Annotation *_pin;
 }
 
 //マップビュー
@@ -89,7 +89,7 @@
     //locationAlbumviewへピンの位置を引き渡す
     if([[segue identifier] isEqualToString:@"Detail"]){
         LocationAlubumViewController *locationAlbumViewController = [segue destinationViewController];
-        locationAlbumViewController.pinCoordinate = pin.coordinate;
+        locationAlbumViewController.pinCoordinate = _pin.coordinate;
     }
 
 
@@ -111,8 +111,8 @@
 //検索開始時に前回の検索結果をクリア
 -(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
-    if(pin){
-        [_MapView removeAnnotation:pin];
+    if(_pin){
+        [_MapView removeAnnotation:_pin];
     }
 }
 //キャンセルボタンタップでサーチバーを隠す
@@ -159,8 +159,8 @@
             
             //検索した場所へピンを表示
             NSString *placeName = place.addressDictionary[@"FormattedAddressLines"][0];
-            pin = [[Annotation alloc]initWithCoordinate:place.location.coordinate title:placeName];
-            [_MapView addAnnotation:pin];
+            _pin = [[Annotation alloc]initWithCoordinate:place.location.coordinate title:placeName];
+            [_MapView addAnnotation:_pin];
         
             }
         }
