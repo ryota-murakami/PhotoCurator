@@ -10,7 +10,7 @@
 
 @interface LocationAlubumViewController ()
 {
-    NSMutableArray *albumList;
+    NSMutableArray *_albumList;
 }
 @end
 
@@ -38,7 +38,14 @@
 
 
 
-    
+}
+
+//ピンの座標に既にあるアルバムを読み込む
+-(void)viewWillAppear:(BOOL)animated
+{
+    NSUserDefaults *database = [NSUserDefaults standardUserDefaults];
+    NSData *data = [database dataForKey:@"albumList"];
+    _albumList = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 
 }
 
@@ -61,7 +68,7 @@
 {
 
     // Return the number of rows in the section.
-    return albumList.count;
+    return _albumList.count;
 }
 
 //新規アルバム名のセルを追加
@@ -70,7 +77,7 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    [albumList enumerateObjectsUsingBlock:^(AlbumData *album, NSUInteger idx, BOOL *stop){
+    [_albumList enumerateObjectsUsingBlock:^(AlbumData *album, NSUInteger idx, BOOL *stop){
         if(idx == indexPath.row){
             cell.textLabel.text = album.title;
             *stop = YES;
@@ -161,16 +168,23 @@
             
         case 1:
            
-            if(!albumList){
-                albumList = [[NSMutableArray alloc] init];
+            if(!_albumList){
+                _albumList = [[NSMutableArray alloc] init];
             }
             
             //新規アルバムに名前と位置情報をセット
             AlbumData *newAlbum = [[AlbumData alloc]initWithTitle:[alertView textFieldAtIndex:0].text location:_pinCoordinate];
             
-            //セルの挿入位置
-            [albumList insertObject:newAlbum atIndex:0];
+            //インスタンス変数に新規アルバムを格納
+            [_albumList insertObject:newAlbum atIndex:0];
             
+            //NSuserDefaultにインスタンス変数を格納
+            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:_albumList];
+            NSUserDefaults *database = [NSUserDefaults standardUserDefaults];
+            [database setObject:data forKey:@"albumList"];
+            [database synchronize];
+            
+            //セルの挿入位置
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
             [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
             

@@ -12,7 +12,7 @@
 
 #import <CoreLocation/CoreLocation.h>
 
-@interface AlbumData : NSObject
+@interface AlbumData : NSObject<NSCoding>
 
 @property(nonatomic,copy) NSString* title;
 @property(nonatomic) CLLocationCoordinate2D location;

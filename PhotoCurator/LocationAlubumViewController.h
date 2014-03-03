@@ -14,6 +14,7 @@
 
 @interface LocationAlubumViewController : UITableViewController<UIAlertViewDelegate>
 
+//遷移元ピンの座標
 @property CLLocationCoordinate2D pinCoordinate;
 
 @end
